@@ -15,7 +15,8 @@ import IconShop from "react-native-vector-icons/AntDesign";
 export function Product() {
   const route = useRoute();
   const navigation = useNavigation();
-  const { user, description, urlImg, price } = route.params;
+  const { user, description, urlImg, price, tags, stock } = route.params;
+  console.log(stock);
 
   return (
     <View style={styles.container}>
@@ -30,6 +31,14 @@ export function Product() {
         }}
         style={styles.image}
       />
+      <View style={styles.tagsContainer}>
+        {tags.map((tag, index) => (
+          <View key={index} style={styles.tag}>
+            <Text style={styles.tagText}>{tag.tagName}</Text>
+          </View>
+        ))}
+      </View>
+      <Text style={styles.stockStyle}>En Stock: {stock}</Text>
       <Text style={styles.priceStyles}>Price: S/.{price}</Text>
       <TouchableOpacity
         style={styles.buttonStyle}
@@ -92,5 +101,25 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 9,
     textAlign: "right",
+  },
+  tagsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginTop: 10,
+  },
+  tag: {
+    backgroundColor: "#fca311",
+    paddingHorizontal: 8,
+    paddingVertical: 5,
+    borderRadius: 15,
+    marginRight: 5,
+    marginBottom: 5,
+  },
+  tagText: {
+    color: "#ffffff",
+  },
+  stockStyle: {
+    fontSize: 16,
+    color: "gray",
   },
 });

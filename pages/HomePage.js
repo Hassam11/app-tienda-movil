@@ -1,12 +1,12 @@
 import React from "react";
 import {
   View,
-  FlatList,
-  Image,
   StyleSheet,
-  Dimensions,
   TouchableOpacity,
   Text,
+  FlatList,
+  Dimensions,
+  Image,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -15,68 +15,84 @@ const width = Dimensions.get("window").width / numColumns;
 
 export function HomePage() {
   const navigation = useNavigation();
+
+  const data = [
+    {
+      key: "1",
+      user: "Polo",
+      description:
+        "Description Description Description Description v Description Description Description Description Description Description ",
+      urlImg:
+        "https://basisperu.com/cdn/shop/products/polohombreazulino.jpg?v=1705507196&width=1445",
+      price: 20.7,
+      tags: [
+        {
+          tagName: "Ropa",
+        },
+      ],
+      stock: 20,
+    },
+    {
+      key: "2",
+      user: "Laptop",
+      description:
+        "Description Description Description Description v Description Description Description Description Description Description ",
+      urlImg:
+        "https://cdnx.jumpseller.com/motics/image/41983488/resize/1800/1800?1699718324",
+      price: 2300.0,
+      tags: [
+        {
+          tagName: "Tecnologia",
+        },
+        {
+          tagName: "Internet",
+        },
+        {
+          tagName: "Gamer",
+        },
+      ],
+      stock: 11,
+    },
+    {
+      key: "3",
+      user: "Bicicleta",
+      description:
+        "Description Description Description Description v Description Description Description Description Description Description ",
+      urlImg:
+        "https://gbi.pe/wp-content/uploads/2022/04/BICICLETA-MONTALNERA-ROJA-SUPERFLY.jpg",
+      price: 120.0,
+      tags: [
+        {
+          tagName: "Deportivo",
+        },
+        {
+          tagName: "Saludable",
+        },
+      ],
+      stock: 10,
+    },
+  ];
+
+  const renderItem = ({ item }) => (
+    <TouchableOpacity
+      style={styles.itemContainer}
+      onPress={() => {
+        navigation.navigate("Product", item);
+      }}
+    >
+      <Image source={{ uri: item.urlImg }} style={styles.image} />
+      <Text>{item.user}</Text>
+    </TouchableOpacity>
+  );
+
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Product", {
-            user: "jane",
-            description:
-              "Description Description Description Description v Description Description Description Description Description Description ",
-            urlImg:
-              "https://content.skyscnr.com/m/2dcd7d0e6f086057/original/GettyImages-186142785.jpg?resize=2560px:1707px",
-            price: 20.7,
-          });
-        }}
-      >
-        <Image
-          source={{
-            uri: "https://content.skyscnr.com/m/2dcd7d0e6f086057/original/GettyImages-186142785.jpg?resize=2560px:1707px",
-          }}
-          style={styles.image}
-        />
-        <Text>Navigate to Product Detail</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Product", {
-            user: "Laptop",
-            description:
-              "Description Description Description Description v Description Description Description Description Description Description ",
-            urlImg:
-              "https://cdnx.jumpseller.com/motics/image/41983488/resize/1800/1800?1699718324",
-            price: 2300.0,
-          });
-        }}
-      >
-        <Image
-          source={{
-            uri: "https://cdnx.jumpseller.com/motics/image/41983488/resize/1800/1800?1699718324",
-          }}
-          style={styles.image}
-        />
-        <Text>Laptop Gamer</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Product", {
-            user: "Bicicleta",
-            description:
-              "Description Description Description Description v Description Description Description Description Description Description ",
-            urlImg:
-              "https://gbi.pe/wp-content/uploads/2022/04/BICICLETA-MONTALNERA-ROJA-SUPERFLY.jpg",
-            price: 120.0,
-          });
-        }}
-      >
-        <Image
-          source={{
-            uri: "https://gbi.pe/wp-content/uploads/2022/04/BICICLETA-MONTALNERA-ROJA-SUPERFLY.jpg",
-          }}
-          style={styles.image}
-        />
-        <Text>Biclieta</Text>
-      </TouchableOpacity>
+    <View style={styles.container}>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.key}
+        numColumns={numColumns}
+      />
     </View>
   );
 }
@@ -84,14 +100,19 @@ export function HomePage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#fff",
+  },
+  itemContainer: {
+    width: width - 20,
+    margin: 5,
+    alignItems: "center",
+    borderRadius: 10,
   },
   image: {
-    width: width - 20,
-    aspectRatio: 1, // Mantiene la relación de aspecto cuadrada
-    margin: 5,
-  },
-  flatListContainer: {
-    justifyContent: "space-between",
+    width: "100%",
+    aspectRatio: 1, // Mantener relación de aspecto cuadrada
+    borderRadius: 10,
   },
 });
