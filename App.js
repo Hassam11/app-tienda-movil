@@ -7,6 +7,7 @@ import { SettingsPage } from "./pages/SettingsPage";
 import { ProductPage } from "./pages/ProductPage";
 import { Product } from "./components/Product/Product";
 import { CartShop } from "./pages/CartShop";
+import UserConfigPage from "./pages/UserConfigPage";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -15,13 +16,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator>
-        <Drawer.Screen name="Home" component={HomePage} />
-        <Drawer.Screen name="Settings" component={SettingsPage} />
+        <Drawer.Screen name="Inicio" component={HomePage} />
+        <Drawer.Screen name="Configuración" component={SettingsPage} />
         {/* <Drawer.Screen name="ProductPage" component={ProductPage} /> */}
-        <Drawer.Screen name="CartShop" component={CartShop} />
+        <Drawer.Screen name="Compras" component={CartShop} />
 
         {/* <Drawer.Screen name="ProductDetail" component={ProductStack} /> */}
         <Stack.Screen name="Product" component={Product} />
+        <Drawer.Screen name="Login" component={UserConfigPage} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

@@ -81,7 +81,7 @@ export function HomePage() {
       }}
     >
       <Image source={{ uri: item.urlImg }} style={styles.image} />
-      <Text>{item.user}</Text>
+      <Text style={{ fontSize: 18 }}>{item.user}</Text>
     </TouchableOpacity>
   );
 
@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     margin: 5,
     alignItems: "center",
     borderRadius: 10,
+    paddingTop: 18,
   },
   image: {
     width: "100%",

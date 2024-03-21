@@ -20,7 +20,10 @@ export function Product() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={{ paddingBottom: 8 }}
+      >
         <Icon name="arrow-back" size={30} />
       </TouchableOpacity>
       <Text style={styles.title}>{user}</Text>
