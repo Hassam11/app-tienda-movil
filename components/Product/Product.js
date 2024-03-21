@@ -9,16 +9,18 @@ import {
 } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import ButtonShop from "../ButtonShop";
+import Icon from "react-native-vector-icons/Ionicons";
+import IconShop from "react-native-vector-icons/AntDesign";
 
 export function Product() {
   const route = useRoute();
   const navigation = useNavigation();
-  const { user, description, urlImg } = route.params;
+  const { user, description, urlImg, price } = route.params;
 
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text>Regresar</Text>
+        <Icon name="arrow-back" size={30} />
       </TouchableOpacity>
       <Text style={styles.title}>{user}</Text>
       <Text style={styles.description}>{description}</Text>
@@ -28,11 +30,13 @@ export function Product() {
         }}
         style={styles.image}
       />
+      <Text style={styles.priceStyles}>Price: S/.{price}</Text>
       <TouchableOpacity
         style={styles.buttonStyle}
-        onPress={() => console.log("Agregado al carrito")}
+        onPress={() => console.log("Agregado al carrito " + user)}
       >
         <Text style={styles.buttonText}>Agregar al carrito</Text>
+        <IconShop name="shoppingcart" size={30} color="white" />
       </TouchableOpacity>
     </View>
   );
@@ -75,9 +79,18 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 15,
     borderRadius: 10,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
   },
   buttonText: {
     textAlign: "center",
     color: "white",
+  },
+  priceStyles: {
+    fontSize: 17,
+    paddingTop: 12,
+    paddingBottom: 9,
+    textAlign: "right",
   },
 });

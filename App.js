@@ -15,9 +15,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator>
-        <Drawer.Screen name="HomePage" component={HomePage} />
-        <Drawer.Screen name="SettingsPage" component={SettingsPage} />
-        <Drawer.Screen name="ProductPage" component={ProductPage} />
+        <Drawer.Screen name="Home" component={HomePage} />
+        <Drawer.Screen name="Settings" component={SettingsPage} />
+        {/* <Drawer.Screen name="ProductPage" component={ProductPage} /> */}
         <Drawer.Screen name="CartShop" component={CartShop} />
 
         {/* <Drawer.Screen name="ProductDetail" component={ProductStack} /> */}

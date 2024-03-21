@@ -25,9 +25,16 @@ export function HomePage() {
               "Description Description Description Description v Description Description Description Description Description Description ",
             urlImg:
               "https://content.skyscnr.com/m/2dcd7d0e6f086057/original/GettyImages-186142785.jpg?resize=2560px:1707px",
+            price: 20.7,
           });
         }}
       >
+        <Image
+          source={{
+            uri: "https://content.skyscnr.com/m/2dcd7d0e6f086057/original/GettyImages-186142785.jpg?resize=2560px:1707px",
+          }}
+          style={styles.image}
+        />
         <Text>Navigate to Product Detail</Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -38,10 +45,37 @@ export function HomePage() {
               "Description Description Description Description v Description Description Description Description Description Description ",
             urlImg:
               "https://cdnx.jumpseller.com/motics/image/41983488/resize/1800/1800?1699718324",
+            price: 2300.0,
           });
         }}
       >
+        <Image
+          source={{
+            uri: "https://cdnx.jumpseller.com/motics/image/41983488/resize/1800/1800?1699718324",
+          }}
+          style={styles.image}
+        />
         <Text>Laptop Gamer</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Product", {
+            user: "Bicicleta",
+            description:
+              "Description Description Description Description v Description Description Description Description Description Description ",
+            urlImg:
+              "https://gbi.pe/wp-content/uploads/2022/04/BICICLETA-MONTALNERA-ROJA-SUPERFLY.jpg",
+            price: 120.0,
+          });
+        }}
+      >
+        <Image
+          source={{
+            uri: "https://gbi.pe/wp-content/uploads/2022/04/BICICLETA-MONTALNERA-ROJA-SUPERFLY.jpg",
+          }}
+          style={styles.image}
+        />
+        <Text>Biclieta</Text>
       </TouchableOpacity>
     </View>
   );
