@@ -87,6 +87,11 @@ export function HomePage() {
 
   return (
     <View style={styles.container}>
+      <Text
+        style={{ fontSize: 30, fontWeight: "bold", textTransform: "uppercase" }}
+      >
+        Tienda Rust
+      </Text>
       <FlatList
         data={data}
         renderItem={renderItem}

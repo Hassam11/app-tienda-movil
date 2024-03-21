@@ -1,10 +1,10 @@
-import { Button, View } from "react-native";
+import { Button, Text, View } from "react-native";
 
 export default function UserConfigPage() {
   return (
     <View>
-      Desde UserConfig
-      <Button>GGAA</Button>
+      <Text>Desde UserConfig</Text>
+      <Button title="Logear" />
     </View>
   );
 }

@@ -26,7 +26,7 @@ export function Product() {
   };
 
   const decreaseQuantity = () => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setQuantity(quantity - 1);
     } else {
       console.log("La cantidad no puede ser menor que 0");
@@ -109,7 +109,7 @@ export function Product() {
                   size={30}
                   style={[
                     styles.button,
-                    quantity === 0 && styles.disabledButton,
+                    quantity === 1 && styles.disabledButton,
                   ]}
                 />
               </TouchableOpacity>
@@ -128,12 +128,20 @@ export function Product() {
                 />
               </TouchableOpacity>
             </View>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={CloseModal}
-            >
-              <Text style={styles.textStyle}>Cancelar</Text>
-            </Pressable>
+            <View style={styles.buttonModal}>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={CloseModal}
+              >
+                <Text style={styles.textStyle}>Cancelar</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => alert("Comprando ...")}
+              >
+                <Text style={styles.textStyle}>Comprar</Text>
+              </Pressable>
+            </View>
           </View>
         </View>
       </Modal>
@@ -251,5 +259,11 @@ const styles = StyleSheet.create({
   ContentModelTextDesc: {
     fontSize: 17,
     fontWeight: "500",
+  },
+  buttonModal: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 20,
+    paddingTop: 20,
   },
 });
