@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -12,6 +12,7 @@ import { useRoute, useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/Ionicons";
 import IconShop from "react-native-vector-icons/AntDesign";
 import IconMore from "react-native-vector-icons/Feather";
+import { CartContext } from "../../context/CartContext";
 
 export function Product() {
   const route = useRoute();
@@ -19,9 +20,17 @@ export function Product() {
   const { user, description, urlImg, price, tags, stock } = route.params;
   const [modalVisible, setModalVisible] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const { addItemToCart } = useContext(CartContext);
+
+  const handleAddToCartContext = () => {
+    addItemToCart({ id: Math.random(), name: user, price, quantity, urlImg });
+    alert("Producto Agregado con Exito!");
+    setQuantity(1);
+    setModalVisible(false);
+  };
 
   const handleAddToCart = () => {
-    console.log("Agregado al carrito " + user + " con cantidad " + quantity);
+    // console.log("Agregado al carrito " + user + " con cantidad " + quantity);
     setModalVisible(true);
   };
 
@@ -79,6 +88,7 @@ export function Product() {
       <Text style={styles.stockStyle}>En Stock: {stock}</Text>
       <Text style={styles.priceStyles}>Price: {formatPrice(price)}</Text>
       <TouchableOpacity style={styles.buttonStyle} onPress={handleAddToCart}>
+        {/* <TouchableOpacity style={styles.buttonStyle} onPress={handleAddToCart}> */}
         <Text style={styles.buttonText}>Agregar al carrito</Text>
         <IconShop name="shoppingcart" size={30} color="white" />
       </TouchableOpacity>
@@ -137,7 +147,7 @@ export function Product() {
               </Pressable>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
-                onPress={() => alert("Comprando ...")}
+                onPress={handleAddToCartContext}
               >
                 <Text style={styles.textStyle}>Comprar</Text>
               </Pressable>

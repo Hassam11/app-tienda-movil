@@ -8,23 +8,26 @@ import { ProductPage } from "./pages/ProductPage";
 import { Product } from "./components/Product/Product";
 import { CartShop } from "./pages/CartShop";
 import UserConfigPage from "./pages/UserConfigPage";
+import { CartProvider } from "./context/CartContext";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen name="Inicio" component={HomePage} />
-        <Drawer.Screen name="Configuración" component={SettingsPage} />
-        {/* <Drawer.Screen name="ProductPage" component={ProductPage} /> */}
-        <Drawer.Screen name="Compras" component={CartShop} />
+    <CartProvider>
+      <NavigationContainer>
+        <Drawer.Navigator>
+          <Drawer.Screen name="Inicio" component={HomePage} />
+          <Drawer.Screen name="Configuración" component={SettingsPage} />
+          {/* <Drawer.Screen name="ProductPage" component={ProductPage} /> */}
+          <Drawer.Screen name="Compras" component={CartShop} />
 
-        {/* <Drawer.Screen name="ProductDetail" component={ProductStack} /> */}
-        <Stack.Screen name="Product" component={Product} />
-        <Drawer.Screen name="Login" component={UserConfigPage} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+          {/* <Drawer.Screen name="ProductDetail" component={ProductStack} /> */}
+          <Stack.Screen name="Product" component={Product} />
+          <Drawer.Screen name="Login" component={UserConfigPage} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </CartProvider>
   );
 }
