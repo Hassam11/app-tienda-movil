@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, Text, View } from "react-native";
+import { Text, View } from "react-native";
 
 export const ProductPage = ({ route }) => {
   console.log(route);

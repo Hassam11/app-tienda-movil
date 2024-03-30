@@ -88,7 +88,6 @@ export function Product() {
       <Text style={styles.stockStyle}>En Stock: {stock}</Text>
       <Text style={styles.priceStyles}>Price: {formatPrice(price)}</Text>
       <TouchableOpacity style={styles.buttonStyle} onPress={handleAddToCart}>
-        {/* <TouchableOpacity style={styles.buttonStyle} onPress={handleAddToCart}> */}
         <Text style={styles.buttonText}>Agregar al carrito</Text>
         <IconShop name="shoppingcart" size={30} color="white" />
       </TouchableOpacity>

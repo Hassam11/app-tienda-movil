@@ -28,7 +28,6 @@ const SettingsStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Settings" component={SettingsPage} />
-      {/* Aquí puedes agregar otras pantallas de configuración si es necesario */}
     </Stack.Navigator>
   );
 };

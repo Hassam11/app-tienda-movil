@@ -4,7 +4,6 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
 import { HomePage } from "./pages/HomePage";
 import { SettingsPage } from "./pages/SettingsPage";
-import { ProductPage } from "./pages/ProductPage";
 import { Product } from "./components/Product/Product";
 import { CartShop } from "./pages/CartShop";
 import UserConfigPage from "./pages/UserConfigPage";
@@ -20,10 +19,7 @@ export default function App() {
         <Drawer.Navigator>
           <Drawer.Screen name="Inicio" component={HomePage} />
           <Drawer.Screen name="Configuración" component={SettingsPage} />
-          {/* <Drawer.Screen name="ProductPage" component={ProductPage} /> */}
           <Drawer.Screen name="Compras" component={CartShop} />
-
-          {/* <Drawer.Screen name="ProductDetail" component={ProductStack} /> */}
           <Stack.Screen name="Product" component={Product} />
           <Drawer.Screen name="Login" component={UserConfigPage} />
         </Drawer.Navigator>
