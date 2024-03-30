@@ -17,10 +17,21 @@ import { CartContext } from "../../context/CartContext";
 export function Product() {
   const route = useRoute();
   const navigation = useNavigation();
-  const { user, description, urlImg, price, tags, stock } = route.params;
   const [modalVisible, setModalVisible] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const { addItemToCart } = useContext(CartContext);
+
+  // Verificar si route.params está definido y contiene la propiedad 'user'
+  if (!route.params || !route.params.user) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.errorText}>No se encontró el producto</Text>
+      </View>
+    );
+  }
+
+  // Si route.params está definido y contiene 'user', continuar con el renderizado del componente
+  const { user, description, urlImg, price, tags, stock } = route.params;
 
   const handleAddToCartContext = () => {
     addItemToCart({ id: Math.random(), name: user, price, quantity, urlImg });
@@ -30,7 +41,6 @@ export function Product() {
   };
 
   const handleAddToCart = () => {
-    // console.log("Agregado al carrito " + user + " con cantidad " + quantity);
     setModalVisible(true);
   };
 
@@ -105,7 +115,6 @@ export function Product() {
               <Text style={styles.ContentModelTextDesc}>
                 Precio: {formatPrice(price * quantity)}
               </Text>
-
               <Text style={styles.modalText}>Cantidad: {quantity}</Text>
             </View>
             <View style={styles.quantityStyle}>
@@ -236,7 +245,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 10,
   },
-
   buttonClose: {
     backgroundColor: "#386fa4",
     borderRadius: 10,
@@ -274,5 +282,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 20,
     paddingTop: 20,
+  },
+  errorText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
